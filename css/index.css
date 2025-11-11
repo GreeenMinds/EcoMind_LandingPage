@@ -136,7 +136,7 @@ section.hero {
   overflow: hidden;
   display: grid;
   place-items: center;
-  min-height: clamp(660px, 72vh, 780px);
+  min-height: 100vh;
 }
 
 .hero__img{
@@ -179,7 +179,7 @@ section.hero {
   background: var(--verde);
   color: #fff;
   text-decoration: none;
-  font-weight: 600;
+  font-weight: 100;
   padding: 12px 24px;
   border-radius: 10px;
   box-shadow: 0 6px 16px rgba(38, 154, 68, 0.35);
