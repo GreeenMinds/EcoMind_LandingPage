@@ -55,6 +55,7 @@ document.addEventListener('DOMContentLoaded', function() {
         window.scrollTo(0, 0);
         sessionStorage.setItem('ecomind_page', 'community');
         history.pushState({ page: 'community' }, 'Comunidad');
+        initComunidadSlider();
     }
 
     // Mostrar Guía para Padres (la nueva)
@@ -228,6 +229,48 @@ document.addEventListener('DOMContentLoaded', function() {
             e.preventDefault();
             alert('Funcionalidad de Sign In en desarrollo');
         });
+    }
+
+   // --- SLIDER DE COMUNIDAD ---
+    function initComunidadSlider() {
+    const nextBtn = document.getElementById('nextSlide');
+    const prevBtn = document.getElementById('prevSlide');
+    const slide1 = document.getElementById('slide1');
+    const slide2 = document.getElementById('slide2');
+
+    if (!nextBtn || !prevBtn || !slide1 || !slide2) return;
+
+    // Estado inicial
+    slide1.style.display = 'flex';
+    slide2.style.display = 'none';
+    prevBtn.style.display = 'none';
+    nextBtn.style.display = 'block';
+
+    // Evitar múltiples listeners: clonar y reemplazar
+    const nextClone = nextBtn.cloneNode(true);
+    const prevClone = prevBtn.cloneNode(true);
+    nextBtn.parentNode.replaceChild(nextClone, nextBtn);
+    prevBtn.parentNode.replaceChild(prevClone, prevBtn);
+
+    // Referencias actualizadas
+    const next = document.getElementById('nextSlide');
+    const prev = document.getElementById('prevSlide');
+
+    // → Siguiente
+    next.addEventListener('click', () => {
+        slide1.style.display = 'none';
+        slide2.style.display = 'flex';
+        next.style.display = 'none';
+        prev.style.display = 'block';
+    });
+
+    // ← Anterior
+    prev.addEventListener('click', () => {
+        slide2.style.display = 'none';
+        slide1.style.display = 'flex';
+        prev.style.display = 'none';
+        next.style.display = 'block';
+    });
     }
     
     // --- 7. MANEJO DEL BOTÓN DE RETROCESO (HISTORIAL) ---
