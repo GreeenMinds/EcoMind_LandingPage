@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Array con todas las "páginas" para ocultarlas fácilmente
     const allPages = [mainPage, signupPage, communityPage, parentsGuidePage, faqPage];
 
-    // --- 2. FUNCIONES PARA MOSTRAR PÁGINAS ---
+    // FUNCIONES PARA MOSTRAR PÁGINAS ---
 
     // Función maestra para ocultar todo
     function hideAllPages() {
