@@ -36,7 +36,6 @@ document.addEventListener('DOMContentLoaded', function () {
     // Guardar estado en sessionStorage
     sessionStorage.setItem('ecomind_page', pageIdToShow);
 
-
     // Si es la página de comunidad, inicializar su slider
     if (pageIdToShow === 'comunidad-page') {
       initComunidadSlider();
@@ -214,3 +213,4 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 }); 
+
