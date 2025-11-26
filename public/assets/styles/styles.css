@@ -207,8 +207,14 @@ section.hero {
   display: block;
 }
 
-html, body {
+html {
+  height: 100%;
+}
+
+body {
   overflow-x: hidden;
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
 }
 
 /* ======= BENEFICIOS ======= */
@@ -1154,12 +1160,11 @@ html, body {
    ========================================================= */
 
 /* El dashboard ocupa toda la pantalla y la página NO scrollea */
-html,
 body.dashboard-body {
   margin: 0;
   padding: 0;
   height: 100%;
-  overflow: hidden; /* sin scroll de página */
+  overflow: hidden; /* sin scroll solo en el dashboard */
   font-family: 'Poppins', sans-serif;
   background: #ffffff;
 }
