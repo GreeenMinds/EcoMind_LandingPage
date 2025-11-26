@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>EcoMind - Dashboard</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link rel="stylesheet" href="assets/styles/styles.css" />
+  <link rel="icon" href="favicon.ico" type="image/x-icon" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+</head>
+
+<body class="dashboard-body">
+  <!-- HEADER SUPERIOR (logo + usuario) -->
+  <header class="app-header">
+    <div class="app-header-inner">
+      <div class="app-header-left">
+        <img src="assets/images/ecomind_logo.png" alt="EcoMind" class="app-logo">
+      </div>
+      <div class="app-header-right">
+        <span class="dash-username">Marcos</span>
+        <img src="assets/images/avatar.png" alt="Avatar" class="dash-avatar">
+      </div>
+    </div>
+  </header>
+
+  <!-- CONTENEDOR PRINCIPAL: SIDEBAR + CONTENIDO -->
+  <div class="dashboard-layout">
+    <!-- Sidebar -->
+    <aside class="dash-sidebar">
+      <nav class="dash-menu">
+        <button class="dash-item" data-page="perfil">Perfil</button>
+        <button class="dash-item active" data-page="retos">Retos</button>
+        <button class="dash-item" data-page="comunidad">Comunidad</button>
+        <button class="dash-item" data-page="ranking">Ranking</button>
+        <button class="dash-item" data-page="ajustes">Ajustes</button>
+      </nav>
+    </aside>
+
+    <!-- Main -->
+    <main class="dash-main">
+      <section class="dash-pages">
+        <!-- RETOS -->
+        <div id="page-retos" class="dash-page active">
+          <h1 class="dash-title">Retos</h1>
+          <p class="dash-subtitle">Explora tus retos activos y completados.</p>
+        </div>
+        <!-- COMUNIDAD -->
+        <div id="page-comunidad" class="dash-page">
+          <h1 class="dash-title">Comunidad</h1>
+          <p class="dash-subtitle">Conecta con otras familias EcoMind.</p>
+        </div>
+
+        <!-- RANKING -->
+        <div id="page-ranking" class="dash-page">
+          <h1 class="dash-title">Ranking</h1>
+          <p class="dash-subtitle">Mira tu posición entre otras familias.</p>
+        </div>
+
+        <!-- PERFIL -->
+        <div id="page-perfil" class="dash-page">
+          <h1 class="dash-title">Perfil</h1>
+          <p class="dash-subtitle">Información básica del usuario.</p>
+        </div>
+
+        <!-- AJUSTES -->
+        <div id="page-ajustes" class="dash-page">
+          <h1 class="dash-title">Ajustes</h1>
+          <p class="dash-subtitle">Preferencias y configuración.</p>
+        </div>
+
+      </section>
+    </main>
+  </div>
+
+  <script src="assets/scripts/dashboard.js"></script>
+</body>
+
+</html>
