@@ -286,4 +286,54 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
+    // ==========================================
+    // 7. MOSTRAR VISTA DE ACTIVIDAD AL HACER CLICK EN UN RETO
+    // ==========================================
+
+    const botonesReto = document.querySelectorAll('.btn-game-img');
+    const viewRetosActividad = document.getElementById('retos-actividad-view');
+
+    botonesReto.forEach(btn => {
+        btn.addEventListener('click', () => {
+            
+            // Ocultar las otras vistas
+            if (viewRetosMain) viewRetosMain.style.display = 'none';
+            if (viewRetosSearch) viewRetosSearch.style.display = 'none';
+
+            // Mostrar la vista de actividad
+            if (viewRetosActividad) viewRetosActividad.style.display = 'block';
+        });
+    });
+
+    // BOTÓN “VOLVER” EN LA ACTIVIDAD
+    const btnVolverRetos = document.getElementById('btn-volver-retos');
+    if (btnVolverRetos) {
+        btnVolverRetos.addEventListener('click', () => {
+            // Cierra actividad y muestra la grilla de retos
+            if (viewRetosActividad) viewRetosActividad.style.display = 'none';
+            if (viewRetosMain) viewRetosMain.style.display = 'grid';
+        });
+    }
+
+        // ==========================================
+    // 7. MENÚ DESPLEGABLE LADO DERECHO (AMIGOS / PARTICIPANTES)
+    // ==========================================
+    const toggles = document.querySelectorAll('.js-activity-toggle');
+
+    toggles.forEach(btn => {
+        const card = btn.closest('.activity-card');
+        const body = card.querySelector('.activity-card-body');
+
+        // estado inicial: solo los que NO tengan is-open empiezan ocultos
+        if (!btn.classList.contains('is-open')) {
+            body.style.display = 'none';
+        }
+
+        btn.addEventListener('click', () => {
+            const isOpen = btn.classList.toggle('is-open');
+            body.style.display = isOpen ? 'block' : 'none';
+        });
+    });
+
+
 });
