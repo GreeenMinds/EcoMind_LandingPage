@@ -4900,13 +4900,10 @@ body.dashboard-body {
     column-count: 1;
   }
 }
-
+}
 /* =========================================
    ----------------Ranking------------------
    ========================================= */
-
-    
-    
     .dash-page #page-ranking .active {
     display: flex !important;
     justify-content: center;
@@ -4915,6 +4912,8 @@ body.dashboard-body {
     #page-ranking .ranking-content-wrapper {
     width: 100%;
     max-width: 850px;
+    margin-left: 35rem;
+    margin-bottom: none;
     }
     #page-ranking { padding: 1.2rem; }
     #page-ranking .ranking-card {
@@ -4927,7 +4926,7 @@ body.dashboard-body {
       font-family: 'Poppins', sans-serif;
     }
     #page-ranking .ranking-header { text-align: center; margin-bottom: 0.6rem; }
-    #page-ranking .trophy-icon { font-size: 5.2rem; display: flex; justify-content:center; margin-right: 10.7rem; }
+    #page-ranking .trophy-icon { font-size: 5.2rem; display: flex; justify-content:center; margin-right: 10.6rem; }
 
     #page-ranking .top-global-title {
       display:flex; align-items:center; justify-content:space-between; gap:8px;
@@ -5044,4 +5043,4 @@ body.dashboard-body {
     width: 100%;
     flex-direction: row;
   }
-}}
+}
