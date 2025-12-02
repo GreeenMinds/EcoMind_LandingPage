@@ -1109,6 +1109,15 @@ if (btnActividadContinuar) {
             }
         });
     }
+
+    // ========= CERRAR SESIÓN =========
+    document.addEventListener("click", (e) => {
+    const btn = e.target.closest(".btn-miembro-danger");
+    if (!btn) return;
+
+    window.location.href = "index.html";
+    });
+
 }
 
 
