@@ -86,7 +86,67 @@ document.addEventListener('DOMContentLoaded', function() {
         showLanding();
     }
 
-    
+     // --- 4. MANEJADOR DE CLICS PRINCIPAL ---
+    // Un solo manejador para todos los enlaces <a>
+    document.querySelectorAll('a').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            const href = this.getAttribute('href');
+
+            // 1. Navegación entre páginas (Comunidad, Guía, FAQ)
+            if (href === '#comunidad') {
+                e.preventDefault();
+                showCommunity();
+                return;
+            }
+            if (href === '#guia') {
+                e.preventDefault();
+                showParentsGuide();
+                return;
+            }
+            if (href === '#preguntas') {
+                e.preventDefault();
+                showFaq();
+                return;
+            }
+
+            // 2. Navegación a Landing (Logo)
+            if (href === '#landing' || this.classList.contains('logo')) {
+                e.preventDefault();
+                showLanding();
+                return;
+            }
+
+                   // 5. Smooth Scroll (para enlaces internos en la Landing Page)
+            if (href.startsWith('#') && href.length > 1 && !['#landing', '#comunidad', '#guia', '#preguntas', '#unete.html', '#retos'].includes(href)) {
+                
+                // Si NO estamos en la landing, ir primero
+                if (sessionStorage.getItem('ecomind_page') !== 'landing') {
+                    showLanding();
+                    // Esperar un momento a que se muestre la landing antes de hacer scroll
+                    setTimeout(() => {
+                        const targetElement = document.querySelector(href);
+                        if (targetElement) {
+                            performSmoothScroll(targetElement);
+                        }
+                    }, 100);
+                } else {
+                    // Ya estamos en la landing, solo hacer scroll
+                    e.preventDefault();
+                    const targetElement = document.querySelector(href);
+                    if (targetElement) {
+                        performSmoothScroll(targetElement);
+                    }
+                }
+                return;
+            }
+                        
+            // 6. Enlaces de Footer o placeholders
+            if (href === '#') {
+                e.preventDefault();
+                console.log('Enlace de placeholder clickeado.');
+            }
+        });
+    });
 });
 
 const hamburger = document.querySelector(".hamburger");
