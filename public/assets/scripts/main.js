@@ -1,3 +1,154 @@
+document.addEventListener('DOMContentLoaded', function() {
+    const mainPage = document.querySelector('main');
+    const communityPage = document.getElementById('comunidad-page');
+    const parentsGuidePage = document.getElementById('parents-guide-page');
+    const faqPage = document.getElementById('faq-page');
+
+    // Referencias al Header y Footer
+    const header = document.querySelector('header');
+    const footer = document.querySelector('footer');
+
+    // Array con todas las "páginas" para ocultarlas fácilmente
+    const allPages = [mainPage, communityPage, parentsGuidePage, faqPage];
+ 
+   // Función maestra para ocultar todo
+    function hideAllPages() {
+        allPages.forEach(page => {
+            if (page) page.style.display = 'none';
+        });
+        // Por defecto, mostrar header y footer
+        if (header) header.style.display = 'block';
+        if (footer) footer.style.display = 'block';
+    }
+
+    // Mostrar Landing Page (la original)
+    function showLanding() {
+        hideAllPages();
+        if (mainPage) mainPage.style.display = 'block';
+        window.scrollTo(0, 0);
+        sessionStorage.setItem('ecomind_page', 'landing');
+        history.pushState({ page: 'landing' }, 'EcoMind');
+    }
+
+    // Mostrar Comunidad (la nueva)
+    function showCommunity() {
+        hideAllPages();
+        if (communityPage) communityPage.style.display = 'block';
+        window.scrollTo(0, 0);
+        sessionStorage.setItem('ecomind_page', 'community');
+        history.pushState({ page: 'community' }, 'Comunidad');
+        initComunidadSlider();
+    }
+
+    // Mostrar Guía para Padres (la nueva)
+    function showParentsGuide() {
+        hideAllPages();
+        if (parentsGuidePage) parentsGuidePage.style.display = 'block';
+        window.scrollTo(0, 0);
+        sessionStorage.setItem('ecomind_page', 'parents-guide');
+        history.pushState({ page: 'parents-guide' }, 'Guía para Padres');
+    }
+
+    // Mostrar FAQ (la nueva)
+    function showFaq() {
+        hideAllPages();
+        if (faqPage) faqPage.style.display = 'block';
+        window.scrollTo(0, 0);
+        sessionStorage.setItem('ecomind_page', 'faq');
+        history.pushState({ page: 'faq' }, 'Preguntas Frecuentes');
+    }
+
+
+      // Función de Smooth Scroll (del código original)
+    function performSmoothScroll(targetElement) {
+        const navbar = document.querySelector('.navbar');
+        const navbarHeight = navbar ? navbar.offsetHeight : 0;
+        const targetPosition = targetElement.offsetTop - navbarHeight - 20;
+        
+        window.scrollTo({
+            top: targetPosition,
+            behavior: 'smooth'
+        });
+    }
+
+
+   // --- 3. RESTAURAR ESTADO AL CARGAR PÁGINA ---
+    const savedPage = sessionStorage.getItem('ecomind_page');
+    
+   if (savedPage === 'community') {
+        showCommunity();
+    } else if (savedPage === 'parents-guide') {
+        showParentsGuide();
+    } else if (savedPage === 'faq') {
+        showFaq();
+    } else {
+        // Por defecto, mostrar la Landing Page
+        showLanding();
+    }
+
+     // --- 4. MANEJADOR DE CLICS PRINCIPAL ---
+    // Un solo manejador para todos los enlaces <a>
+    document.querySelectorAll('a').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            const href = this.getAttribute('href');
+
+            // 1. Navegación entre páginas (Comunidad, Guía, FAQ)
+            if (href === '#comunidad') {
+                e.preventDefault();
+                showCommunity();
+                return;
+            }
+            if (href === '#guia') {
+                e.preventDefault();
+                showParentsGuide();
+                return;
+            }
+            if (href === '#preguntas') {
+                e.preventDefault();
+                showFaq();
+                return;
+            }
+
+            // 2. Navegación a Landing (Logo)
+            if (href === '#landing' || this.classList.contains('logo')) {
+                e.preventDefault();
+                showLanding();
+                return;
+            }
+
+                   // 5. Smooth Scroll (para enlaces internos en la Landing Page)
+            if (href.startsWith('#') && href.length > 1 && !['#landing', '#comunidad', '#guia', '#preguntas', '#unete.html', '#retos'].includes(href)) {
+                
+                // Si NO estamos en la landing, ir primero
+                if (sessionStorage.getItem('ecomind_page') !== 'landing') {
+                    showLanding();
+                    // Esperar un momento a que se muestre la landing antes de hacer scroll
+                    setTimeout(() => {
+                        const targetElement = document.querySelector(href);
+                        if (targetElement) {
+                            performSmoothScroll(targetElement);
+                        }
+                    }, 100);
+                } else {
+                    // Ya estamos en la landing, solo hacer scroll
+                    e.preventDefault();
+                    const targetElement = document.querySelector(href);
+                    if (targetElement) {
+                        performSmoothScroll(targetElement);
+                    }
+                }
+                return;
+            }
+                        
+            // 6. Enlaces de Footer o placeholders
+            if (href === '#') {
+                e.preventDefault();
+                console.log('Enlace de placeholder clickeado.');
+            }
+        });
+    });
+});
+
 const hamburger = document.querySelector(".hamburger");
     const navMenu = document.querySelector(".navbar-right");
 
