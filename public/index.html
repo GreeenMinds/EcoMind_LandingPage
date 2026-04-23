@@ -1,15 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
+<html>
+  <head>
     <base>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>EcoMind</title>
     <link rel="stylesheet" href="assets/styles/styles.css" />
+    <link rel="icon" href="favicon.ico" type="image/x-icon" />
     <!-- Fuente Poppins -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet"/>
-</head>
-<body>
+
+  </head>
+
+  <body>
     <header>
     <nav class="navbar">
       <a href="index.html" class="logo" aria-label="EcoMind - inicio">
@@ -33,7 +36,7 @@
         </a>
       </div>
     </nav>
-    </header>
+  </header>
 
     <main>
         <section class="hero">
@@ -122,7 +125,8 @@
         </section>
     </main>
     
-<!-- TERCERA SECCIÓN - FAQ -->
+
+    <!-- TERCERA SECCIÓN - FAQ -->
 
     <div id="faq-page" class="page-section">
         <div class="faq-container">
@@ -164,8 +168,8 @@
             </details>
         </div>
     </div>
-    
-  <div id="parents-guide-page" class="page-section">
+
+    <div id="parents-guide-page" class="page-section">
         <section class="guide-hero">
             <div class="guide-content-wrapper">
                 <div class="guide-text-content">
@@ -185,7 +189,7 @@
             </div>
         </section>
 
-      <section class="educational-resources">
+        <section class="educational-resources">
             <h2>Recursos Educativos</h2>
             <p class="resources-subtitle">Todo lo que encontrarás para empezar tu viaje educativo ambiental</p>
             <div class="resources-grid">
@@ -206,6 +210,7 @@
                 </div>
             </div>
         </section>
+
         <section class="parent-tips">
             <h2>Consejos para Padres</h2>
             <ul>
@@ -219,7 +224,7 @@
         </section>
     </div>
 
-<div id="comunidad-page" class="page-section">
+     <div id="comunidad-page" class="page-section">
       <section class="hero-section">
         <div class="hero-content">
           <a href="#unete.html" class="btn-join-hero btn-unete"
@@ -333,17 +338,142 @@
             id="nextSlide"
             aria-label="Siguiente diapositiva"
           >
-            ›
           </button>
           <button id="prevSlide" class="slider-arrow left-arrow" aria-label="Anterior" style="display:none;">‹</button>
           
           </div>
       </section>
 
+      <section class="testimonials-section">
+        <div class="container">
+          <h2 class="section-title">Lo que dicen nuestras familias</h2>
+
+          <div class="testimonials-grid">
+            <div class="testimonial-card">
+              <p class="testimonial-text">
+                "EcoMind ha transformado la manera en que mi familia se relaciona
+                con el medio ambiente. Mis hijos están súper motivados y ahora
+                todos participamos en los retos juntos."
+              </p>
+              <div class="author-info">
+                <div class="author-initial initial-m">M</div>
+                <div>
+                  <span class="author-name">María Gonzales</span>
+                  <span class="author-details">Madre de 2 niños - Lima</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="testimonial-card">
+              <p class="testimonial-text">
+                "EcoMind ha transformado la manera en que mi familia se relaciona
+                con el medio ambiente. Mis hijos están súper motivados y ahora
+                todos participamos en los retos juntos."
+              </p>
+              <div class="author-info">
+                <div class="author-initial initial-c">C</div>
+                <div>
+                  <span class="author-name">Carlos Ramírez</span>
+                  <span class="author-details">Profesor - Callao</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="testimonial-card">
+              <p class="testimonial-text">
+                "La comunidad es increíble. He aprendido tanto de otras familias
+                y mis hijos han hecho amigos que comparten su amor por el
+                planeta. ¡Totalmente recomendado!"
+              </p>
+              <div class="author-info">
+                <div class="author-initial initial-a">A</div>
+                <div>
+                  <span class="author-name">Ana Torres</span>
+                  <span class="author-details">Madre de 3 niños - Lima</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="community-events-section" aria-labelledby="community-events-title">
+        <div class="community-events-shell">
+          <div class="community-events-copy">
+            <span class="community-events-kicker">Eventos cercanos</span>
+            <h2 id="community-events-title" class="community-events-title">
+              Entérate de los encuentros ecológicos más cerca de ti
+            </h2>
+            <p class="community-events-description">
+              Descubre actividades organizadas por la comunidad EcoMind, participa
+              con tu familia y conecta con otros Ecominders que también quieren
+              generar un impacto real.
+            </p>
+             <div class="community-events-highlights">
+              <div class="community-events-pill">Actividades familiares</div>
+              <div class="community-events-pill">Voluntariado local</div>
+              <div class="community-events-pill">Retos con recompensa</div>
+            </div>
+          </div>
+
+          
+          <article class="community-events-card">
+            <div class="community-events-media">
+              <img
+                src="assets/images/LandingPage_comunidad/eventos.png"
+                alt="Vista previa de eventos de la comunidad EcoMind"
+                class="community-events-image"
+              />
+              <div class="community-events-badge">3 eventos esta semana</div>
+            </div>
+
+            <div class="community-events-list-wrap">
+              <h3 class="community-events-list-title">Próximas actividades</h3>
+
+              <ul class="community-events-list">
+                <li class="community-events-item">
+                  <div>
+                    <p class="community-events-item-title">Limpieza de río</p>
+                    <p class="community-events-item-meta">15 nov • 10:00 AM • Lima</p>
+                  </div>
+                  <span class="community-events-tag">Comunidad</span>
+                </li>
+
+                <li class="community-events-item">
+                  <div>
+                    <p class="community-events-item-title">Plantación urbana</p>
+                    <p class="community-events-item-meta">18 nov • 9:00 AM • San Miguel</p>
+                  </div>
+                  <span class="community-events-tag">Familias</span>
+                </li>
+
+                <li class="community-events-item">
+                  <div>
+                    <p class="community-events-item-title">Taller de reciclaje</p>
+                    <p class="community-events-item-meta">20 nov • 4:00 PM • Miraflores</p>
+                  </div>
+                  <span class="community-events-tag">Taller</span>
+                </ul>
+              </li>
+            </div>
+          </article>
+        </div>
       </section>
     </div>
 
     
-<script src="assets/scripts/main.js"></script>
-</body>
+    <footer class="footer">
+        <div class="footer__inner">
+            <nav class="footer__links" aria-label="Enlaces de pie de página">
+            <a href="#">Nosotros</a>
+            <a href="#">Blog</a>
+            <a href="#">Tienda</a>
+            <a href="#">Términos</a>
+            <a href="#">Privacidad</a>
+            </nav>
+        </div>
+    </footer>
+
+    <script src="assets/scripts/main.js"></script>
+  </body>
 </html>
