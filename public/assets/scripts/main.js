@@ -21,41 +21,57 @@ document.addEventListener('DOMContentLoaded', function() {
         if (footer) footer.style.display = 'block';
     }
 
+    function updateRoute(page, shouldPush = true) {
+        const hashes = {
+            landing: '#landing',
+            community: '#comunidad',
+            'parents-guide': '#guia',
+            faq: '#preguntas'
+        };
+        const hash = hashes[page] || '#landing';
+
+        sessionStorage.setItem('ecomind_page', page);
+
+        if (shouldPush && window.location.hash !== hash) {
+            history.pushState({ page }, '', hash);
+        } else {
+            history.replaceState({ page }, '', hash);
+        }
+    }
+
     // Mostrar Landing Page (la original)
-    function showLanding() {
+    function showLanding(shouldPush = true) {
         hideAllPages();
         if (mainPage) mainPage.style.display = 'block';
         window.scrollTo(0, 0);
-        sessionStorage.setItem('ecomind_page', 'landing');
-        history.pushState({ page: 'landing' }, 'EcoMind');
+        updateRoute('landing', shouldPush);
     }
 
     // Mostrar Comunidad (la nueva)
-    function showCommunity() {
+    function showCommunity(shouldPush = true) {
         hideAllPages();
         if (communityPage) communityPage.style.display = 'block';
         window.scrollTo(0, 0);
-        sessionStorage.setItem('ecomind_page', 'community');
-        history.pushState({ page: 'community' }, 'Comunidad');
-        initComunidadSlider();
+        updateRoute('community', shouldPush);
+        if (typeof initComunidadSlider === 'function') {
+            initComunidadSlider();
+        }
     }
 
     // Mostrar Guía para Padres (la nueva)
-    function showParentsGuide() {
+    function showParentsGuide(shouldPush = true) {
         hideAllPages();
         if (parentsGuidePage) parentsGuidePage.style.display = 'block';
         window.scrollTo(0, 0);
-        sessionStorage.setItem('ecomind_page', 'parents-guide');
-        history.pushState({ page: 'parents-guide' }, 'Guía para Padres');
+        updateRoute('parents-guide', shouldPush);
     }
 
     // Mostrar FAQ (la nueva)
-    function showFaq() {
+    function showFaq(shouldPush = true) {
         hideAllPages();
         if (faqPage) faqPage.style.display = 'block';
         window.scrollTo(0, 0);
-        sessionStorage.setItem('ecomind_page', 'faq');
-        history.pushState({ page: 'faq' }, 'Preguntas Frecuentes');
+        updateRoute('faq', shouldPush);
     }
 
 
@@ -71,20 +87,61 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
+    function initViewsCarousel() {
+        document.querySelectorAll('.view-carousel').forEach(carousel => {
+            const viewSection = carousel.closest('.view');
+            const title = viewSection ? viewSection.querySelector('.view__header h2') : null;
+            const slides = Array.from(carousel.querySelectorAll('.sprint_frontend'));
+            const dots = viewSection ? Array.from(viewSection.querySelectorAll('.view-carousel__dot')) : [];
+            const prevButton = carousel.querySelector('.view-carousel__arrow--prev');
+            const nextButton = carousel.querySelector('.view-carousel__arrow--next');
+            let currentSlide = 0;
+
+            if (!slides.length || !title || !prevButton || !nextButton) return;
+
+            function showSlide(index) {
+                currentSlide = (index + slides.length) % slides.length;
+
+                slides.forEach((slide, slideIndex) => {
+                    slide.classList.toggle('is-active', slideIndex === currentSlide);
+                });
+
+                dots.forEach((dot, dotIndex) => {
+                    dot.classList.toggle('is-active', dotIndex === currentSlide);
+                });
+
+                title.textContent = slides[currentSlide].dataset.title;
+            }
+
+            prevButton.addEventListener('click', () => showSlide(currentSlide - 1));
+            nextButton.addEventListener('click', () => showSlide(currentSlide + 1));
+
+            dots.forEach((dot, dotIndex) => {
+                dot.addEventListener('click', () => showSlide(dotIndex));
+            });
+        });
+    }
+
+    initViewsCarousel();
+
+    function showPageFromHash(shouldPush = false) {
+        if (window.location.hash === '#comunidad') {
+            showCommunity(shouldPush);
+        } else if (window.location.hash === '#guia') {
+            showParentsGuide(shouldPush);
+        } else if (window.location.hash === '#preguntas') {
+            showFaq(shouldPush);
+        } else {
+            showLanding(shouldPush);
+        }
+    }
 
    // --- 3. RESTAURAR ESTADO AL CARGAR PÁGINA ---
-    const savedPage = sessionStorage.getItem('ecomind_page');
-    
-   if (savedPage === 'community') {
-        showCommunity();
-    } else if (savedPage === 'parents-guide') {
-        showParentsGuide();
-    } else if (savedPage === 'faq') {
-        showFaq();
-    } else {
-        // Por defecto, mostrar la Landing Page
-        showLanding();
-    }
+    showPageFromHash(false);
+
+    window.addEventListener('popstate', () => {
+        showPageFromHash(false);
+    });
 
      // --- 4. MANEJADOR DE CLICS PRINCIPAL ---
     // Un solo manejador para todos los enlaces <a>
@@ -117,7 +174,8 @@ document.addEventListener('DOMContentLoaded', function() {
             }
 
                    // 5. Smooth Scroll (para enlaces internos en la Landing Page)
-            if (href.startsWith('#') && href.length > 1 && !['#landing', '#comunidad', '#guia', '#preguntas', '#unete.html', '#retos'].includes(href)) {
+            if (href.startsWith('#') && href.length > 1 && !['#landing', '#comunidad', '#guia', '#preguntas', '#unete.html'].includes(href)) {
+                e.preventDefault();
                 
                 // Si NO estamos en la landing, ir primero
                 if (sessionStorage.getItem('ecomind_page') !== 'landing') {
@@ -131,7 +189,6 @@ document.addEventListener('DOMContentLoaded', function() {
                     }, 100);
                 } else {
                     // Ya estamos en la landing, solo hacer scroll
-                    e.preventDefault();
                     const targetElement = document.querySelector(href);
                     if (targetElement) {
                         performSmoothScroll(targetElement);

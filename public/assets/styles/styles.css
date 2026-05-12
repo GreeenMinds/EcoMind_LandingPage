@@ -4,8 +4,18 @@ body {
 }
 
 .view {
-  padding: 0 60px;
-  color:#3a8436
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: clamp(36px, 7vw, 76px) clamp(16px, 5vw, 60px);
+  color: #3a8436;
+  text-align: center;
+}
+
+.view__header h2 {
+  margin: 0 0 28px;
+  color: #256b36;
+  font-size: clamp(26px, 4vw, 42px);
+  font-weight: 800;
 }
 
 .view-container {
@@ -19,6 +29,125 @@ body {
   display: block;
   box-shadow: #d3d3d3 0px 10px 30px;
   border-radius: 12px;
+}
+
+.view--microtransactions {
+  padding-top: 20px;
+}
+
+.view--microtransactions .view-container {
+  width: 100%;
+  max-width: 980px;
+  margin: 0 auto;
+  align-items: center;
+}
+
+.view--microtransactions .sprint_frontend {
+  width: min(100%, 980px);
+  object-fit: contain;
+}
+
+.view-carousel {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+}
+
+.view-carousel .view-container {
+  position: relative;
+  display: block;
+  width: min(100%, 980px);
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border-radius: 12px;
+  box-shadow: #d3d3d3 0px 10px 30px;
+  background: #f4f8f1;
+}
+
+.view-carousel .sprint_frontend {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+  box-shadow: none;
+  border-radius: 0;
+  opacity: 0;
+  transform: translateX(18px);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.view-carousel .sprint_frontend.is-active {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.view-carousel__arrow {
+  width: 46px;
+  height: 46px;
+  border: 0;
+  border-radius: 50%;
+  background: var(--verde);
+  color: #fff;
+  cursor: pointer;
+  flex: 0 0 auto;
+  font-size: 2.1rem;
+  line-height: 1;
+  display: grid;
+  place-items: center;
+  box-shadow: 0 8px 20px rgba(43, 130, 75, 0.18);
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.view-carousel__arrow:hover {
+  background: #3a8436;
+  transform: translateY(-2px);
+}
+
+.view-carousel__dots {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.view-carousel__dot {
+  width: 11px;
+  height: 11px;
+  border: 0;
+  border-radius: 50%;
+  background: #cbd8c5;
+  cursor: pointer;
+  padding: 0;
+}
+
+.view-carousel__dot.is-active {
+  background: var(--verde);
+}
+
+@media (max-width: 700px) {
+  .view-carousel {
+    gap: 10px;
+  }
+
+  .view-carousel__arrow {
+    position: absolute;
+    z-index: 2;
+    width: 38px;
+    height: 38px;
+    font-size: 1.8rem;
+  }
+
+  .view-carousel__arrow--prev {
+    left: -8px;
+  }
+
+  .view-carousel__arrow--next {
+    right: -8px;
+  }
 }
 /* HEADER FIJO */
 header {
