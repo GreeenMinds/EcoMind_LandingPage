@@ -3,6 +3,23 @@ body {
   font-family: 'Poppins', sans-serif;
 }
 
+.view {
+  padding: 0 60px;
+  color:#3a8436
+}
+
+.view-container {
+  display: flex;
+  justify-content: center;
+}
+
+.sprint_frontend {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  box-shadow: #d3d3d3 0px 10px 30px;
+  border-radius: 12px;
+}
 /* HEADER FIJO */
 header {
   background-color: white;
