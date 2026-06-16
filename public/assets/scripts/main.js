@@ -324,7 +324,53 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
+    function initProductVideoCarousel() {
+        const carousel = document.querySelector('.product-video__carousel');
+        if (!carousel) return;
+
+        const slides = Array.from(carousel.querySelectorAll('.product-video__slide'));
+        const dots = Array.from(document.querySelectorAll('.product-video__dot'));
+        const prevButton = carousel.querySelector('.product-video__arrow--prev');
+        const nextButton = carousel.querySelector('.product-video__arrow--next');
+        let currentSlide = 0;
+
+        if (!slides.length || !prevButton || !nextButton) return;
+
+        function stopVideo(slide) {
+            const iframe = slide.querySelector('iframe');
+            if (!iframe) return;
+
+            const currentSrc = iframe.src;
+            iframe.src = currentSrc;
+        }
+
+        function showSlide(index) {
+            const previousSlide = slides[currentSlide];
+            currentSlide = (index + slides.length) % slides.length;
+
+            slides.forEach((slide, slideIndex) => {
+                slide.classList.toggle('is-active', slideIndex === currentSlide);
+            });
+
+            dots.forEach((dot, dotIndex) => {
+                dot.classList.toggle('is-active', dotIndex === currentSlide);
+            });
+
+            if (previousSlide && previousSlide !== slides[currentSlide]) {
+                stopVideo(previousSlide);
+            }
+        }
+
+        prevButton.addEventListener('click', () => showSlide(currentSlide - 1));
+        nextButton.addEventListener('click', () => showSlide(currentSlide + 1));
+
+        dots.forEach((dot, dotIndex) => {
+            dot.addEventListener('click', () => showSlide(dotIndex));
+        });
+    }
+
     initViewsCarousel();
+    initProductVideoCarousel();
 
     applyLanguage(localStorage.getItem('ecomind_language') || 'es');
 
