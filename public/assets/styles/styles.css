@@ -222,9 +222,38 @@ header {
 }
 
 /* BOTÓN */
+.language-switch {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--verde);
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.language-switch__label {
+  white-space: nowrap;
+}
+
+.language-switch__select {
+  border: 1px solid rgba(105, 164, 78, 0.35);
+  border-radius: 6px;
+  background: #fff;
+  color: #256b36;
+  font: inherit;
+  font-weight: 700;
+  padding: 8px 10px;
+  cursor: pointer;
+}
+
+.language-switch__select:focus {
+  outline: 2px solid rgba(105, 164, 78, 0.28);
+  outline-offset: 2px;
+}
+
 .btn-unete {
   display: inline-flex;
-  margin-left: 30px;
+  margin-left: 0;
   align-items: center;
   gap: 8px;
   background-color: var(--verde);
@@ -1377,6 +1406,11 @@ html, body {
     margin-left: 0;
     width: 80%;
     justify-content: center;
+  }
+
+  .language-switch {
+    flex-direction: column;
+    gap: 6px;
   }
 
   .hamburger.active .bar:nth-child(2) {
