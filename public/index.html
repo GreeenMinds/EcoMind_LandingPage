@@ -31,7 +31,15 @@
             <li><a href="#guia">GUÍA PARA PADRES</a></li>
             <li><a href="#comunidad">COMUNIDAD</a></li>
         </ul>
-        <a href="#unete.html" class="btn-unete">
+        <label class="language-switch" aria-label="Cambiar idioma">
+          <span class="language-switch__label">Idioma</span>
+          <select id="languageSelect" class="language-switch__select">
+            <option value="es">ES</option>
+            <option value="en">EN</option>
+          </select>
+        </label>
+
+        <a href="https://ecomind-frontend.web.app/quests" class="btn-unete">
           ÚNETE AHORA <span class="arrow"></span>
         </a>
       </div>
@@ -84,6 +92,23 @@
                     <img src="assets/images/LandingPage/btn_red.png" alt="Genera un impacto real" class="benefit__img">
                     <h3>Genera un impacto real</h3>
                     <p>Aplica los conocimientos adquiridos y contribuye a mejorar tu entorno desde acciones pequeñas.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="product-video" aria-labelledby="product-video-title">
+            <div class="product-video__inner">
+                <h2 id="product-video-title">About the product</h2>
+
+                <div class="product-video__frame">
+                    <iframe
+                        src="https://www.youtube.com/embed/xlC5w4u3GxY?si=yhEvA5FQLk65-B_o"
+                        title="YouTube video player"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin"
+                        allowfullscreen>
+                    </iframe>
                 </div>
             </div>
         </section>
@@ -286,7 +311,7 @@
      <div id="comunidad-page" class="page-section">
       <section class="hero-section">
         <div class="hero-content">
-          <a href="#unete.html" class="btn-join-hero btn-unete"
+          <a href="https://ecomind-frontend.web.app/quests" class="btn-join-hero btn-unete"
             >ÚNETE A NOSOTROS</a
           >
 
