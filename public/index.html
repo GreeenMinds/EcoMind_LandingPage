@@ -100,15 +100,42 @@
             <div class="product-video__inner">
                 <h2 id="product-video-title">About the product</h2>
 
-                <div class="product-video__frame">
-                    <iframe
-                        src="https://www.youtube.com/embed/xlC5w4u3GxY?si=yhEvA5FQLk65-B_o"
-                        title="YouTube video player"
-                        frameborder="0"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                        referrerpolicy="strict-origin-when-cross-origin"
-                        allowfullscreen>
-                    </iframe>
+                <div class="product-video__carousel" aria-label="Videos sobre el producto">
+                    <button class="product-video__arrow product-video__arrow--prev" type="button" aria-label="Video anterior">
+                        &lsaquo;
+                    </button>
+
+                    <div class="product-video__frame">
+                        <div class="product-video__slide is-active">
+                            <iframe
+                                src="https://www.youtube.com/embed/xlC5w4u3GxY?si=yhEvA5FQLk65-B_o"
+                                title="Video sobre EcoMind"
+                                frameborder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                referrerpolicy="strict-origin-when-cross-origin"
+                                allowfullscreen>
+                            </iframe>
+                        </div>
+                        <div class="product-video__slide">
+                            <iframe
+                                src="https://www.youtube.com/embed/lqOLK9ZJiZ0?si=olJw77kQAERfNjo4"
+                                title="Video del producto EcoMind"
+                                frameborder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                referrerpolicy="strict-origin-when-cross-origin"
+                                allowfullscreen>
+                            </iframe>
+                        </div>
+                    </div>
+
+                    <button class="product-video__arrow product-video__arrow--next" type="button" aria-label="Video siguiente">
+                        &rsaquo;
+                    </button>
+                </div>
+
+                <div class="product-video__dots" aria-label="Seleccionar video">
+                    <button class="product-video__dot is-active" type="button" aria-label="Ver primer video"></button>
+                    <button class="product-video__dot" type="button" aria-label="Ver segundo video"></button>
                 </div>
             </div>
         </section>
@@ -120,7 +147,7 @@
 
             <div class="view-carousel" aria-label="Vistas de la aplicación">
                 <button class="view-carousel__arrow view-carousel__arrow--prev" type="button" aria-label="Vista anterior">
-                    ‹
+                    &lsaquo;
                 </button>
 
                 <div class="view-container">
@@ -151,7 +178,7 @@
                 </div>
 
                 <button class="view-carousel__arrow view-carousel__arrow--next" type="button" aria-label="Vista siguiente">
-                    ›
+                    &rsaquo;
                 </button>
             </div>
 
@@ -423,7 +450,7 @@
             aria-label="Siguiente diapositiva"
           >
           </button>
-          <button id="prevSlide" class="slider-arrow left-arrow" aria-label="Anterior" style="display:none;">‹</button>
+          <button id="prevSlide" class="slider-arrow left-arrow" aria-label="Anterior" style="display:none;">&lsaquo;</button>
           
           </div>
       </section>
@@ -435,7 +462,7 @@
 
             <div class="view-carousel" aria-label="Vistas de comunidad">
                 <button class="view-carousel__arrow view-carousel__arrow--prev" type="button" aria-label="Vista anterior">
-                    ‹
+                    &lsaquo;
                 </button>
 
                 <div class="view-container">
@@ -460,7 +487,7 @@
                 </div>
 
                 <button class="view-carousel__arrow view-carousel__arrow--next" type="button" aria-label="Vista siguiente">
-                    ›
+                    &rsaquo;
                 </button>
             </div>
 
